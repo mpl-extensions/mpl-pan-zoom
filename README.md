@@ -7,5 +7,3 @@
 [![codecov](https://codecov.io/gh/ianhi/mpl-pan-zoom/branch/master/graph/badge.svg)](https://codecov.io/gh/ianhi/mpl-pan-zoom)
 
 Panning and zooming with the mouse in Matplotlib.
-
-

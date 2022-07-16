@@ -91,4 +91,3 @@ def zoom_factory(ax, base_scale=1.1):
 
     # return the disconnect function
     return disconnect_zoom
-

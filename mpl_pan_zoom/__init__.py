@@ -5,9 +5,10 @@ except ImportError:
 __author__ = "Ian Hunt-Isaak"
 __email__ = "ianhuntisaak@gmail.com"
 
-from ._zoom import zoom_factory
-from ._pan import PanManager
 from matplotlib.backend_bases import MouseButton
+
+from ._pan import PanManager
+from ._zoom import zoom_factory
 
 __all__ = [
     "__version__",

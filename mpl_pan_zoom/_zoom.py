@@ -7,12 +7,15 @@ __all__ = [
 def zoom_factory(ax, base_scale=1.1):
     """
     Add ability to zoom with the scroll wheel.
+
+
     Parameters
     ----------
     ax : matplotlib axes object
         axis on which to implement scroll to zoom
     base_scale : float
         how much zoom on each tick of scroll wheel
+
     Returns
     -------
     disconnect_zoom : function
@@ -23,7 +26,8 @@ def zoom_factory(ax, base_scale=1.1):
         return lim[1] - lim[0]
 
     fig = ax.get_figure()  # get the figure of interest
-    fig.canvas.capture_scroll = True
+    if hasattr(fig.canvas, "capture_scroll"):
+        fig.canvas.capture_scroll = True
     has_toolbar = hasattr(fig.canvas, "toolbar") and fig.canvas.toolbar is not None
     if has_toolbar:
         # it might be possible to have an interactive backend without

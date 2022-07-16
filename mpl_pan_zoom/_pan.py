@@ -20,7 +20,7 @@ class PanManager:
         Right: 3
     """
 
-    def __init__(self, fig, button=3):
+    def __init__(self, fig, button):
         self.fig = fig
         self._id_drag = None
         self.button = button

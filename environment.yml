@@ -1,0 +1,9 @@
+name: mpl-pan-zoom-dev
+channels:
+  - defaults
+dependencies:
+  - pandoc
+  - pip
+  - python
+  - pip:
+      - -e .[dev]

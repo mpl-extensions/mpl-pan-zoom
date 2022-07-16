@@ -69,17 +69,26 @@ class PanManager:
 
         self._id_press = None
         self._id_release = None
+        # just to be sure
+        if self.fig.canvas.widgetlock.isowner(self):
+            self.fig.canvas.widgetlock.release(self)
 
     def _cancel_action(self):
         self._xypress = []
         if self._id_drag:
             self.fig.canvas.mpl_disconnect(self._id_drag)
             self._id_drag = None
+        if self.fig.canvas.widgetlock.isowner(self):
+            self.fig.canvas.widgetlock.release(self)
 
     def press(self, event):
         if event.button != self.button:
             self._cancel_action()
             return
+        if not self.fig.canvas.widgetlock.available(self):
+            return
+
+        self.fig.canvas.widgetlock(self)
 
         x, y = event.x, event.y
 

@@ -12,7 +12,7 @@ The below instructions also use [Mamba](https://github.com/mamba-org/mamba#the-f
 git clone <your fork>
 cd mpl-pan-zoom
 mamba env create
-conda activate mpl-pan-zoom-dev
+conda activate m=zoom-dev
 pre-commit install
 ```
 

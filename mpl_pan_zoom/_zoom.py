@@ -3,6 +3,8 @@ import numpy as np
 __all__ = [
     "zoom_factory",
 ]
+
+
 # based on https://gist.github.com/tacaswell/3144287
 def zoom_factory(ax, base_scale=1.1):
     """

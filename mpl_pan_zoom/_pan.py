@@ -1,6 +1,8 @@
 __all__ = [
     "PanManager",
 ]
+
+
 class PanManager:
     """
     Enable panning a plot with any mouse button.
@@ -50,7 +52,9 @@ class PanManager:
             raise RuntimeError("The PanManager is already enabled")
 
         self._id_press = self.fig.canvas.mpl_connect("button_press_event", self.press)
-        self._id_release = self.fig.canvas.mpl_connect("button_release_event", self.release)
+        self._id_release = self.fig.canvas.mpl_connect(
+            "button_release_event", self.release
+        )
 
     def disable(self):
         """
@@ -103,7 +107,9 @@ class PanManager:
             ):
                 a.start_pan(x, y, event.button)
                 self._xypress.append((a, i))
-                self._id_drag = self.fig.canvas.mpl_connect("motion_notify_event", self._mouse_move)
+                self._id_drag = self.fig.canvas.mpl_connect(
+                    "motion_notify_event", self._mouse_move
+                )
 
     def release(self, event):
         self._cancel_action()

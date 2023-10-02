@@ -23,7 +23,6 @@ except ImportError:
     release = "unknown"
 
 
-
 # -- Project information -----------------------------------------------------
 
 project = "mpl_pan_zoom"

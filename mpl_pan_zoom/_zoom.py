@@ -76,9 +76,15 @@ def zoom_factory(ax, base_scale=1.1, auto_centering: bool = False):
 
         if auto_centering:
             if np.abs(new_yrange) > np.abs(orig_yrange):
-                new_ylim = orig_center[1] - new_yrange / 2, orig_center[1] + new_yrange / 2
+                new_ylim = (
+                    orig_center[1] - new_yrange / 2,
+                    orig_center[1] + new_yrange / 2,
+                )
             if np.abs(new_xrange) > np.abs(orig_xrange):
-                new_xlim = orig_center[0] - new_xrange / 2, orig_center[0] + new_xrange / 2
+                new_xlim = (
+                    orig_center[0] - new_xrange / 2,
+                    orig_center[0] + new_xrange / 2,
+                )
 
         ax.set_xlim(new_xlim)
         ax.set_ylim(new_ylim)

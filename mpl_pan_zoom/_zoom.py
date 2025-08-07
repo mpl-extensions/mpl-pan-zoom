@@ -6,10 +6,9 @@ __all__ = [
 
 
 # based on https://gist.github.com/tacaswell/3144287
-def zoom_factory(ax, base_scale=1.1, auto_centering: bool = False):
+def zoom_factory(ax, base_scale=1.1, auto_centering: bool = False):  # noqa: C901
     """
     Add ability to zoom with the scroll wheel.
-
 
     Parameters
     ----------

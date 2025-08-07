@@ -225,4 +225,6 @@ def linkcode_resolve(domain, info):
 
     fn = os.path.relpath(fn, start=os.path.dirname("../mpl_pan_zoom"))
 
-    return f"https://github.com/ianhi/mpl-pan-zoom/blob/main/mpl_pan_zoom/{fn}{linespec}"  # noqa
+    return (
+        f"https://github.com/ianhi/mpl-pan-zoom/blob/main/mpl_pan_zoom/{fn}{linespec}"  # noqa
+    )

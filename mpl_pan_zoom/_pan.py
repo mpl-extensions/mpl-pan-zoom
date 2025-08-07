@@ -33,14 +33,14 @@ class PanManager:
 
     @property
     def enabled(self) -> bool:
-        """
-        Status of the PanManager, whether it's enabled or disabled.
-        """
+        """Status of the PanManager, whether it's enabled or disabled."""
         return self._id_press is not None and self._id_release is not None
 
     def enable(self):
         """
-        Enable the PanManager. It should not be necessary to call this function
+        Enable the PanManager.
+
+        It should not be necessary to call this function
         unless it's used after a call to :meth:`PanManager.disable`.
 
         Raises

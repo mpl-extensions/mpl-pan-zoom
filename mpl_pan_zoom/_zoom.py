@@ -6,7 +6,7 @@ __all__ = [
 
 
 # based on https://gist.github.com/tacaswell/3144287
-def zoom_factory(ax, base_scale=1.1):
+def zoom_factory(ax, base_scale=1.1, auto_centering: bool = False):
     """
     Add ability to zoom with the scroll wheel.
 
@@ -17,6 +17,8 @@ def zoom_factory(ax, base_scale=1.1):
         axis on which to implement scroll to zoom
     base_scale : float
         how much zoom on each tick of scroll wheel
+    auto_centering: bool
+        whether to auto center zoom
 
     Returns
     -------
@@ -49,8 +51,6 @@ def zoom_factory(ax, base_scale=1.1):
         cur_xlim = ax.get_xlim()
         cur_ylim = ax.get_ylim()
         # set the range
-        (cur_xlim[1] - cur_xlim[0]) * 0.5
-        (cur_ylim[1] - cur_ylim[0]) * 0.5
         xdata = event.xdata  # get event x location
         ydata = event.ydata  # get event y location
         if event.button == "up":
@@ -74,10 +74,18 @@ def zoom_factory(ax, base_scale=1.1):
         new_yrange = limits_to_range(new_ylim)
         new_xrange = limits_to_range(new_xlim)
 
-        if np.abs(new_yrange) > np.abs(orig_yrange):
-            new_ylim = orig_center[1] - new_yrange / 2, orig_center[1] + new_yrange / 2
-        if np.abs(new_xrange) > np.abs(orig_xrange):
-            new_xlim = orig_center[0] - new_xrange / 2, orig_center[0] + new_xrange / 2
+        if auto_centering:
+            if np.abs(new_yrange) > np.abs(orig_yrange):
+                new_ylim = (
+                    orig_center[1] - new_yrange / 2,
+                    orig_center[1] + new_yrange / 2,
+                )
+            if np.abs(new_xrange) > np.abs(orig_xrange):
+                new_xlim = (
+                    orig_center[0] - new_xrange / 2,
+                    orig_center[0] + new_xrange / 2,
+                )
+
         ax.set_xlim(new_xlim)
         ax.set_ylim(new_ylim)
 

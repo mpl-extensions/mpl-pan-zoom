@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "mpl-pan-zoom"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Panning and zooming with the mouse for matplotlib"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -57,6 +57,9 @@ testing = [
     "pytest-cov",
     "pytest-mpl",
 ]
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["mpl_pan_zoom"]

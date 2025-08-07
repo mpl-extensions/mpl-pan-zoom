@@ -1,7 +1,13 @@
 try:
-    from ._version import version as __version__
+    from importlib.metadata import version
+
+    __version__ = version("mpl-pan-zoom")
 except ImportError:
-    __version__ = "unknown"
+    # For Python < 3.8 or if package not installed
+    try:
+        from ._version import version as __version__
+    except ImportError:
+        __version__ = "unknown"
 __author__ = "Ian Hunt-Isaak"
 __email__ = "ianhuntisaak@gmail.com"
 

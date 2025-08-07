@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch full git history for hatch-vcs
     - name: Install uv
       uses: astral-sh/setup-uv@v3
     - name: Build and publish the Python package
       env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         uv build
-        uv publish --token $TWINE_PASSWORD
+        uv publish

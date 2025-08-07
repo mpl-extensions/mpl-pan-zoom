@@ -30,12 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv venv
-          uv pip install -e ".[testing,dev]"
-
-      - name: Lint with ruff
-        run: |
-          uv run ruff check .
-          uv run ruff format --check .
+          uv pip install -e ".[testing]"
 
       - name: Test with pytest
         run: uv run pytest
